@@ -13,6 +13,7 @@
   <h2 class="text-2xl font-bold tracking-wide mb-10 mt-16 capitalize">
       Tours packages
   </h2>
+ 
   <div class="flex flex-col gap-5 md:flex-row md:mx-5 md:flex-wrap justify-center container p-4">
       {{-- card --}}
       @foreach ($tour as $item)
