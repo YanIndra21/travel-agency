@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\activityController;
 use App\Http\Controllers\tourController;
 use App\Http\Controllers\transfers;
@@ -6,16 +7,34 @@ use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::middleware(['splade'])->group(function () {
+    Route::get('/', fn () => view('home'))->name('home');
+    Route::get('/docs', fn () => view('docs'))->name('docs');
+
+    // Registers routes to support the interactive components...
+    Route::spladeWithVueBridge();
+
+    // Registers routes to support password confirmation in Form and Link components...
+    Route::spladePasswordConfirmation();
+
+    // Registers routes to support Table Bulk Actions and Exports...
+    Route::spladeTable();
+
+    // Registers routes to support async File Uploads with Filepond...
+    Route::spladeUploads();
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -81,4 +100,4 @@ Route::get('/activities',[activityController::class, 'show']);
 // read activity
 Route::get('/dashboard/detailActivity/{id}', [dashboardController::class, 'readActivities']);
 // read tour
-Route::get('/dashboard/detailTour/{id}', [dashboardController::class, 'readTour']);
+Route::get('/detailTour/{id}', [dashboardController::class, 'readTour']);

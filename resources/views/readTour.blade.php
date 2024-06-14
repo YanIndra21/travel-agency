@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container md:mx-auto">
-        {{-- header picture --}}
+        {{-- header --}}
         <div class="flex justify-start my-4 mx-4 capitalize font-bold text-2xl lg:!text-4xl lg:mt-4">
             <h1>{{$tour->nama_tour}}</h1>
         </div>
@@ -35,9 +35,60 @@
         </li>
         </ol>
     </nav>
-    <div class="w-full h-56 opacity-85  mx-auto md:!mx-0 md:h-96 overflow-hidden flex justify-center items-center">
-        <img src="{{ url('storage/images/'.$tour->foto) }}" class="lg:object-cover !rounded-lg" alt="Nusa Penida">
-    </div>
+  {{-- carousel --}}
+    <div id="default-carousel" class="relative w-full" data-carousel="slide">
+  <!-- Carousel wrapper -->
+  <div class="relative h-56 overflow-hidden md:h-96 lg:!h-[550px]">
+       <!-- Item 1 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="/img/kelingking.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Pantai Kelingking">
+      </div>
+      <!-- Item 2 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                <img src="/img/penida.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Diamond Beach">
+      </div>
+      <!-- Item 3 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+          <img src="/img/lempuyang.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="lempuyang Temple">
+      </div>
+      <!-- Item 4 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+       <img src="/img/ubud.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="Ubud">
+      </div>
+      <!-- Item 5 -->
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/img/gate.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="handara gateS">
+      </div>
+  </div>
+  <!-- Slider indicators -->
+  <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+      <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+  </div>
+  <!-- Slider controls -->
+  <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30  group-hover:bg-white/50  group-focus:ring-4 group-focus:ring-white  group-focus:outline-none">
+          <svg class="w-4 h-4 text-white  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+          </svg>
+          <span class="sr-only">Previous</span>
+      </span>
+  </button>
+  <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30  group-hover:bg-white/50  group-focus:ring-4 group-focus:ring-white  group-focus:outline-none">
+          <svg class="w-4 h-4 text-white  rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </svg>
+          <span class="sr-only">Next</span>
+      </span>
+  </button>
+</div>
+
+
+{{-- carousel end --}}
     {{-- header picture end --}}
    {{-- deskripsi --}}
     <div class=" px-4 container mx-auto indent-4 lg:indent-0 text-justify my-4">
@@ -46,16 +97,48 @@
     {{-- deskripsi end --}}
     {{-- destination --}}
     <div class="container mx-auto px-6 mb-8 capitalize flex flex-col">
-        <h1 class="font-bold tracking-wide capitalize text-xl mb-3">{{$tour->nama_tour}} Itinerary</h1>
-        <div class="text-lg ">
-            <h2 class="mb-1">09.00 - Pickup at the hotel</h2>
-            <h2 class="mb-1">10.00 - {{$tour->tempat1}}</h2>
-            <h2 class="mb-1">12.00 - Lunch</h2>
-            <h2 class="mb-1">13.00 - {{$tour->tempat2}}</h2>
-            <h2 class="mb-1">15.00 - {{$tour->tempat3}}</h2>
-            @if ($tour->tempat4)
-                <h2 class="mb-1">17.00 - {{$tour->tempat4}}</h2>
-            @endif
+        <div class=" py-2">
+            <h1 class="font-bold tracking-wide capitalize text-xl mb-3">{{$tour->nama_tour}} Itinerary</h1>
+            <div class="flex flex-col justify-center">
+                {{-- 1 --}}
+                <div class="border-b mb-4">
+                    <h1 class="text-xl tracking-wide mb-4">{{$tour->tempat1}}</h1>
+                    <img src="/img/talot.jpg" alt="talot">
+                    <p class="mt-4 mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi impedit nam assumenda 
+                        sint deserunt inventore sapiente animi culpa similique! Eligendi tenetur reiciendis laudantium error 
+                        totam exercitationem iusto aperiam laborum cum!
+                    </p>
+                </div>
+                {{-- 2 --}}
+                <div class="border-b mb-4">
+                    <h1 class="text-xl tracking-wide mb-4">{{$tour->tempat2}}</h1>
+                    <img src="/img/talot.jpg" alt="talot">
+                    <p class="mt-4 mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi impedit nam assumenda 
+                        sint deserunt inventore sapiente animi culpa similique! Eligendi tenetur reiciendis laudantium error 
+                        totam exercitationem iusto aperiam laborum cum!
+                    </p>
+                </div>
+                {{-- 3 --}}
+                <div class="border-b mb-4">
+                    <h1 class="text-xl tracking-wide mb-4">{{$tour->tempat3}}</h1>
+                    <img src="/img/talot.jpg" alt="talot">
+                    <p class="mt-4 mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi impedit nam assumenda 
+                        sint deserunt inventore sapiente animi culpa similique! Eligendi tenetur reiciendis laudantium error 
+                        totam exercitationem iusto aperiam laborum cum!
+                    </p>
+                </div>
+                {{-- 4 --}}
+                @if ($tour->tempat4)
+                <div class="border-b mb-4">
+                    <h1 class="text-xl tracking-wide mb-4">{{$tour->tempat4}}</h1>
+                    <img src="/img/talot.jpg" alt="talot">
+                    <p class="mt-4 mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi impedit nam assumenda 
+                        sint deserunt inventore sapiente animi culpa similique! Eligendi tenetur reiciendis laudantium error 
+                        totam exercitationem iusto aperiam laborum cum!
+                    </p>
+                </div>
+                @endif
+            </div>
         </div>
     </div>
     {{-- destination end --}}
@@ -74,12 +157,12 @@
                 </div>
             </div>
             <div class="flex flex-row mb-4">
-                <div class="w-[100px] md:w-[40px] lg:w-[35px] mr-5 mt-3">
-                    <img src="/icons/paid.png" alt="">
+                <div class="w-[60px] md:w-[40px] lg:w-[35px] mr-5 mt-3">
+                    <img src="/icons/cash.png" alt="">
                 </div>
                 <div class="flex flex-col md:ml-1 lg:mt-3">
                     <h1 class="font-semibold tracking-wider text-justify">Paid on arrival</h1>
-                <p class="text-sm" >Enjoy your arrival worry-free with our 'Paid On Arrival' service! Secure your journey with upfront payments and travel with peace of mind</p>
+                <p class="text-sm" >Secure your journey with upfront payments and travel with peace of mind</p>
                 </div>
             </div>
             <div class="flex flex-row mb-4 md:-ml-1">

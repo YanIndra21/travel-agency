@@ -45,6 +45,9 @@
                 <a href="/tours" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-emerald-400 duration-500 transition md:p-0   lg:text-xl text-lg">Tours</a>
               </li>
               <li>
+                <a href="/tours" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-emerald-400 duration-500 transition md:p-0   lg:text-xl text-lg">Penida Tours</a>
+              </li>
+              <li>
                 <a href="/pickup" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-emerald-400 duration-500 transition md:p-0   lg:text-xl text-lg">Airport  Transfers</a>
               </li>
               <li>
